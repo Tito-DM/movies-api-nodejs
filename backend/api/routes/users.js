@@ -8,7 +8,7 @@ router.get("/users");
 // get user stats
 
 //Update
-router.put("/:id", verify, updateUser);
+router.put("/:id", verify, updateUser.update);
 
 //delete
 
