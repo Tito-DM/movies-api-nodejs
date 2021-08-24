@@ -1,26 +1,23 @@
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 
-
 //get all user
 const index = async (req, res) => {
   try {
-    
     const user = await User.find().limit(10);
-  
-  //map user data
-  const newUsers = user.map( u =>{
-      const {password, ...other} = u._doc
-      return other
-    })
-   
+
+    //map user data
+    const newUsers = user.map((u) => {
+      const { password, ...other } = u._doc;
+      return other;
+    });
+
     //send response
     res.status(200).json(newUsers);
-  } catch (error) {}
- 
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
-
-
 
 //get single user
 const show = async (req, res) => {
